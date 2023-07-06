@@ -20,13 +20,13 @@ db.sequelize = sequelize;
 db.estudiantes = require("./estudiante.model")(sequelize, Sequelize);
 db.cursos = require("./curso.model")(sequelize, Sequelize);
 
-db.estudiantes.hasMany(db.cursos, {
-  as: "cursos",
+db.cursos.hasMany(db.estudiantes, {
+  as: "estudiantes",
 });
 
-db.cursos.belongsTo(db.estudiantes, {
-  foreignKey: "Estudiante_id",
-  as: "estudiante",
+db.estudiantes.belongsTo(db.cursos, {
+  foreignKey: "cursoId",
+  as: "curso",
 });
 
 module.exports = db;
